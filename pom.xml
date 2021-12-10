@@ -36,8 +36,8 @@
         <m2e.apt.activation>jdt_apt</m2e.apt.activation>
         <run.addResources>false</run.addResources>
         <!-- These remain empty unless the corresponding profile is active -->
-        <profile.api-docs />
-        <profile.tls />
+        <profile.api-docs/>
+        <profile.tls/>
 
         <!-- Dependency versions -->
         <jhipster-dependencies.version>7.4.0</jhipster-dependencies.version>
@@ -88,6 +88,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>de.apnmt.common</groupId>
+            <artifactId>apnmt-common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>tech.jhipster</groupId>
             <artifactId>jhipster-framework</artifactId>
@@ -526,7 +531,7 @@
                         </execution>
                     </executions>
                     <configuration>
-                      <javaVersion>${java.version}</javaVersion>
+                        <javaVersion>${java.version}</javaVersion>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -640,7 +645,7 @@
                             <id>enforce-dependencyConvergence</id>
                             <configuration>
                                 <rules>
-                                    <DependencyConvergence />
+                                    <DependencyConvergence/>
                                 </rules>
                                 <fail>false</fail>
                             </configuration>
