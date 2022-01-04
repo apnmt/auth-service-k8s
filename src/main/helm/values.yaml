@@ -1,0 +1,24 @@
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+    tag: authservice-k8s
+    pullPolicy: Always
+
+emissary:
+    prefix: /service/authentication/
+    auth:
+        prefix: /api/authenticate
+
+spec:
+    ports:
+        targetPort: 9999
+
+properties:
+    bootstrapServer:
+        name: SPRING_KAFKA_BOOTSTRAPSERVERS
+        value: apnmt-kafka-kafka-bootstrap.apnmt.svc.cluster.local:9092
+    autoStartup:
+        name: SPRING_KAFKA_AUTOSTARTUP
+        value: false

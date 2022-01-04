@@ -1,0 +1,8 @@
+---
+apiVersion: getambassador.io/v3alpha1
+kind: AuthService
+metadata:
+  name: {{ .Values.image.tag }}-emissary-authservice
+spec:
+  auth_service: {{ .Values.image.tag }}.{{ .Release.Namespace }}:80
+  path_prefix: {{ .Values.emissary.auth.prefix }}
