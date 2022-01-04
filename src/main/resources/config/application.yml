@@ -118,6 +118,7 @@ spring:
     basename: i18n/messages
   main:
     allow-bean-definition-overriding: true
+    web-application-type: reactive
   task:
     execution:
       thread-name-prefix: authservice-task-
