@@ -13,6 +13,11 @@
     <description>Description for authservice</description>
 
     <repositories>
+        <repository>
+            <id>github</id>
+            <name>GitHub</name>
+            <url>https://maven.pkg.github.com/apnmt/apnmt-common</url>
+        </repository>
         <!-- jhipster-needle-maven-repository -->
     </repositories>
 
