@@ -62,7 +62,7 @@ jobs:
           cat src/main/helm/values.yaml >> k8s-config/charts/values.yaml
       - name: Copy additional templates
         run: |
-          cp src/main/helm/templates/. k8s-config/charts/templates
+          cp -r src/main/helm/templates/. k8s-config/charts/templates
       - name: Set Helm Chart Name
         uses: datamonsters/replace-action@v2
         with:
