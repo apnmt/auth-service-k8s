@@ -8,6 +8,7 @@ image:
 
 emissary:
     prefix: /service/authentication/
+    bypass_auth: true
     auth:
         prefix: /api/authenticate
 
