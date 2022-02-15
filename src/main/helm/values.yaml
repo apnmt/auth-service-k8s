@@ -3,7 +3,7 @@
 replicaCount: 1
 
 image:
-    tag: authservice
+    tag: authservice-k8s
     pullPolicy: Always
 
 emissary:
