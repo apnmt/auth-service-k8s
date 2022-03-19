@@ -103,7 +103,7 @@ public class SecurityConfiguration {
             .pathMatchers("/api/authenticate/service/appointment/api/customers/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/services/**").permitAll()
             .pathMatchers("/api/authenticate/service/appointment/api/services/**").hasAnyAuthority(AuthoritiesConstants.MANAGER, AuthoritiesConstants.ADMIN)
-            // OrganisationService
+            // OrganizationService
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/opening-hours/organization/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/working-hours/organization/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/closing-times/organization/**").permitAll()

@@ -32,6 +32,8 @@ public class InitialSetupMigration {
     public void addUsers(MongockTemplate mongoTemplate) {
         Authority adminAuthority = new Authority();
         adminAuthority.setName(AuthoritiesConstants.ADMIN);
+        Authority managerAuthority = new Authority();
+        managerAuthority.setName(AuthoritiesConstants.MANAGER);
         Authority userAuthority = new Authority();
         userAuthority.setName(AuthoritiesConstants.USER);
 
@@ -50,8 +52,23 @@ public class InitialSetupMigration {
         adminUser.getAuthorities().add(userAuthority);
         mongoTemplate.save(adminUser);
 
+        User managerUser = new User();
+        managerUser.setId("user-2");
+        managerUser.setLogin("manager");
+        managerUser.setPassword("$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K");
+        managerUser.setFirstName("manager");
+        managerUser.setLastName("Manager");
+        managerUser.setEmail("manager@localhost");
+        managerUser.setActivated(true);
+        managerUser.setLangKey("en");
+        managerUser.setCreatedBy(Constants.SYSTEM);
+        managerUser.setCreatedDate(Instant.now());
+        managerUser.getAuthorities().add(managerAuthority);
+        managerUser.getAuthorities().add(userAuthority);
+        mongoTemplate.save(managerUser);
+
         User userUser = new User();
-        userUser.setId("user-2");
+        userUser.setId("user-3");
         userUser.setLogin("user");
         userUser.setPassword("$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K");
         userUser.setFirstName("");
