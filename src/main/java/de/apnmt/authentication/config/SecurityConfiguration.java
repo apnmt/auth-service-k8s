@@ -98,7 +98,7 @@ public class SecurityConfiguration {
             .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/appointment/api/appointments/**").permitAll()
             .pathMatchers(HttpMethod.DELETE, "/api/authenticate/service/appointment/api/appointments/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments/{id}").permitAll()
-            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments}").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/customers").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers("/api/authenticate/service/appointment/api/customers/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/services/**").permitAll()
