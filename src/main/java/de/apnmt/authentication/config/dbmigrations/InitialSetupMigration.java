@@ -19,9 +19,12 @@ public class InitialSetupMigration {
     public void addAuthorities(MongockTemplate mongoTemplate) {
         Authority adminAuthority = new Authority();
         adminAuthority.setName(AuthoritiesConstants.ADMIN);
+        Authority managerAuthority = new Authority();
+        managerAuthority.setName(AuthoritiesConstants.MANAGER);
         Authority userAuthority = new Authority();
         userAuthority.setName(AuthoritiesConstants.USER);
         mongoTemplate.save(adminAuthority);
+        mongoTemplate.save(managerAuthority);
         mongoTemplate.save(userAuthority);
     }
 

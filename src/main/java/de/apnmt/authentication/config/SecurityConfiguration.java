@@ -90,7 +90,34 @@ public class SecurityConfiguration {
             .and()
             .authorizeExchange()
             .pathMatchers("/api/authenticate").permitAll()
+
+            // Authentication for Backend Services
             .pathMatchers("/api/authenticate/**").authenticated()
+            // AppointmentService
+            .pathMatchers(HttpMethod.POST, "/api/authenticate/service/appointment/api/appointments").permitAll()
+            .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/appointment/api/appointments/**").permitAll()
+            .pathMatchers(HttpMethod.DELETE, "/api/authenticate/service/appointment/api/appointments/**").permitAll()
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments/{id}").permitAll()
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments}").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/customers").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers("/api/authenticate/service/appointment/api/customers/**").permitAll()
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/services/**").permitAll()
+            .pathMatchers("/api/authenticate/service/appointment/api/services/**").hasAnyAuthority(AuthoritiesConstants.MANAGER, AuthoritiesConstants.ADMIN)
+            // OrganisationService
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/opening-hours/organization/**").permitAll()
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/working-hours/organization/**").permitAll()
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/closing-times/organization/**").permitAll()
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/employees/organization/**").permitAll()
+            .pathMatchers("/api/authenticate/service/organization/**").hasAnyAuthority(AuthoritiesConstants.MANAGER, AuthoritiesConstants.ADMIN)
+            // OrganizationAppointmentService
+            .pathMatchers("/api/authenticate/service/organizationappointment/**").permitAll()
+            // PaymentService
+            .pathMatchers(HttpMethod.POST, "/api/authenticate/service/payment/api/products").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/payment/api/products/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers(HttpMethod.POST, "/api/authenticate/service/payment/api/prices").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/payment/api/prices/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/payment/api/customers").hasAuthority(AuthoritiesConstants.ADMIN)
+
             .pathMatchers("/api/register").permitAll()
             .pathMatchers("/api/activate").permitAll()
             .pathMatchers("/api/account/reset-password/init").permitAll()
