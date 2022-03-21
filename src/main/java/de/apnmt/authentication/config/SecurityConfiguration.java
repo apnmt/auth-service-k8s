@@ -92,7 +92,6 @@ public class SecurityConfiguration {
             .pathMatchers("/api/authenticate").permitAll()
 
             // Authentication for Backend Services
-            .pathMatchers("/api/authenticate/**").authenticated()
             // AppointmentService
             .pathMatchers(HttpMethod.POST, "/api/authenticate/service/appointment/api/appointments").permitAll()
             .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/appointment/api/appointments/**").permitAll()
@@ -110,13 +109,16 @@ public class SecurityConfiguration {
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/employees/organization/**").permitAll()
             .pathMatchers("/api/authenticate/service/organization/**").hasAnyAuthority(AuthoritiesConstants.MANAGER, AuthoritiesConstants.ADMIN)
             // OrganizationAppointmentService
-            .pathMatchers("/api/authenticate/service/organizationappointment/**").permitAll()
+            .pathMatchers("/api/authenticate/service/organizationappointment/api/slots").permitAll()
+            .pathMatchers("/api/authenticate/service/organizationappointment/**").hasAuthority(AuthoritiesConstants.ADMIN)
             // PaymentService
             .pathMatchers(HttpMethod.POST, "/api/authenticate/service/payment/api/products").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/payment/api/products/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers(HttpMethod.POST, "/api/authenticate/service/payment/api/prices").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/payment/api/prices/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/payment/api/customers").hasAuthority(AuthoritiesConstants.ADMIN)
+
+            .pathMatchers("/api/authenticate/**").authenticated()
 
             .pathMatchers("/api/register").permitAll()
             .pathMatchers("/api/activate").permitAll()
