@@ -53,9 +53,8 @@ public class UserJWTController {
     }
 
     @RequestMapping(path = "/authenticate/**", method = {RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PATCH})
-    public ResponseEntity<String> authenticate() {
-        Optional<String> username = SecurityUtils.getCurrentUserLogin().blockOptional();
-        return ResponseEntity.ok().header(ApnmtUtil.USERNAME_HEADER, username.orElse("")).body("Authentication Successful");
+    public Mono<ResponseEntity<String>> authenticate() {
+        return SecurityUtils.getCurrentUserLogin().map(username -> ResponseEntity.ok().header(ApnmtUtil.USERNAME_HEADER, username).body("Authentication Successful")).defaultIfEmpty(ResponseEntity.ok().body("Authentication Successful"));
     }
 
     /**
