@@ -118,7 +118,10 @@ public class SecurityConfiguration {
             .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/payment/api/prices/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/payment/api/customers").hasAuthority(AuthoritiesConstants.ADMIN)
 
-            .pathMatchers("/api/authenticate/**/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers("/api/authenticate/service/appointment/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers("/api/authenticate/service/organization/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers("/api/authenticate/service/organizationappointment/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers("/api/authenticate/service/payment/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers("/api/authenticate/**").authenticated()
 
             .pathMatchers("/api/register").permitAll()
