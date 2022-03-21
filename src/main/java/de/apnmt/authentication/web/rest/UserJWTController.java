@@ -1,9 +1,11 @@
 package de.apnmt.authentication.web.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import de.apnmt.authentication.security.SecurityUtils;
 import de.apnmt.authentication.security.jwt.JWTFilter;
 import de.apnmt.authentication.security.jwt.TokenProvider;
 import de.apnmt.authentication.web.rest.vm.LoginVM;
+import de.apnmt.common.ApnmtUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 /**
  * Controller to authenticate users.
@@ -51,7 +54,8 @@ public class UserJWTController {
 
     @RequestMapping(path = "/authenticate/**", method = {RequestMethod.POST, RequestMethod.PUT, RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PATCH})
     public ResponseEntity<String> authenticate() {
-        return ResponseEntity.ok("Authentication Successful");
+        Optional<String> username = SecurityUtils.getCurrentUserLogin().blockOptional();
+        return ResponseEntity.ok().header(ApnmtUtil.USERNAME_HEADER, username.orElse("")).body("Authentication Successful");
     }
 
     /**
