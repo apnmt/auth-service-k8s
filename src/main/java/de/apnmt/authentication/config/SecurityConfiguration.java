@@ -97,7 +97,9 @@ public class SecurityConfiguration {
             .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/appointment/api/appointments/**").permitAll()
             .pathMatchers(HttpMethod.DELETE, "/api/authenticate/service/appointment/api/appointments/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments/{id}").permitAll()
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments/organization/**").authenticated()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/customers/organization/**").authenticated()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/customers").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers("/api/authenticate/service/appointment/api/customers/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/services/**").permitAll()
@@ -122,7 +124,7 @@ public class SecurityConfiguration {
             .pathMatchers("/api/authenticate/service/organization/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers("/api/authenticate/service/organizationappointment/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers("/api/authenticate/service/payment/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
-            .pathMatchers("/api/authenticate/**").authenticated()
+            .pathMatchers("/api/authenticate/**").hasAuthority(AuthoritiesConstants.ADMIN)
 
             .pathMatchers("/api/register").permitAll()
             .pathMatchers("/api/activate").permitAll()
