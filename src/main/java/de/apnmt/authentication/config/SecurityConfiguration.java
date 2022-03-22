@@ -119,6 +119,8 @@ public class SecurityConfiguration {
             .pathMatchers(HttpMethod.POST, "/api/authenticate/service/payment/api/prices").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/payment/api/prices/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/payment/api/customers").hasAuthority(AuthoritiesConstants.ADMIN)
+            .pathMatchers("/api/authenticate/service/payment/api/stripe/events/**").permitAll()
+            .pathMatchers("/api/authenticate/service/payment/**").authenticated()
 
             .pathMatchers("/api/authenticate/service/appointment/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers("/api/authenticate/service/organization/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
