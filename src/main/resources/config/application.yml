@@ -135,6 +135,11 @@ spring:
   output:
     ansi:
       console-available: true
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: auth-service
+      auto-startup: false
 
 server:
   servlet:
