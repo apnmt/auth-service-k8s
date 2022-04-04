@@ -110,6 +110,7 @@ public class SecurityConfiguration {
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/closing-times/organization/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/employees/organization/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/organization/api/organizations/**").permitAll()
+            .pathMatchers("/api/authenticate/service/organization/api/organizations").authenticated()
             .pathMatchers("/api/authenticate/service/organization/**").hasAnyAuthority(AuthoritiesConstants.MANAGER, AuthoritiesConstants.ADMIN)
             // OrganizationAppointmentService
             .pathMatchers("/api/authenticate/service/organizationappointment/api/slots").permitAll()
