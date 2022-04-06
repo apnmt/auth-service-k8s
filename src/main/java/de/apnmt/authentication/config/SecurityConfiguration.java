@@ -95,6 +95,7 @@ public class SecurityConfiguration {
             // AppointmentService
             .pathMatchers(HttpMethod.POST, "/api/authenticate/service/appointment/api/appointments").permitAll()
             .pathMatchers(HttpMethod.PUT, "/api/authenticate/service/appointment/api/appointments/**").permitAll()
+            .pathMatchers(HttpMethod.DELETE, "/api/authenticate/service/appointment/api/appointments").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers(HttpMethod.DELETE, "/api/authenticate/service/appointment/api/appointments/**").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments/{id}").permitAll()
             .pathMatchers(HttpMethod.GET, "/api/authenticate/service/appointment/api/appointments/organization/**").authenticated()
